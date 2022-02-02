@@ -1,4 +1,5 @@
 <ng-container *ngIf="games$ | async as games">
-  <bet-game-tile *ngFor="let game of games; trackBy: gameTrackFunction">
-  </bet-game-tile>
+  <bet-game-tile *ngFor="let game of games; trackBy: gameTrackFunction"
+                 [game]="game"
+  ></bet-game-tile>
 </ng-container>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GameCategory } from './game/domain/game-category';
 
 @Component({
   selector: 'bet-root',
@@ -8,15 +7,15 @@ import { GameCategory } from './game/domain/game-category';
 })
 export class AppComponent {
   navBarItems = [
-    { label: 'Top Games', category: GameCategory.TOP },
-    { label: 'New Games', category: GameCategory.NEW },
-    { label: 'Slots', category: GameCategory.SLOTS },
-    { label: 'Jackpots', category: GameCategory.SLOTS },
-    { label: 'Live', category: undefined }, // TODO what should be displayed here?
-    { label: 'Blackjack', category: GameCategory.BLACKJACK },
-    { label: 'Roulette', category: GameCategory.ROULETTE },
-    { label: 'Table', category: GameCategory.CLASSIC },// TODO table === classic?
-    { label: 'Poker', category: GameCategory.POKER },
-    { label: 'Other', category: GameCategory.BALL }
+    { label: 'Top Games', path: 'top' },
+    { label: 'New Games', path: 'new' },
+    { label: 'Slots', path: 'slots' },
+    { label: 'Jackpots', path: 'jackpots' }, // TODO handle jackpots
+    { label: 'Live', path: 'live' }, // TODO what should be displayed here?
+    { label: 'Blackjack', path: 'blackjack' },
+    { label: 'Roulette', path: 'roulette' },
+    { label: 'Table', path: 'table' },// TODO table === classic?
+    { label: 'Poker', path: 'poker' },
+    { label: 'Other', path: 'other' }
   ];
 }

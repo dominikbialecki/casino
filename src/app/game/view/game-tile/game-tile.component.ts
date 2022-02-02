@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Game } from '../../domain/game';
 
 @Component({
   selector: 'bet-game-tile',
@@ -6,11 +7,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./game-tile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GameTileComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class GameTileComponent {
+  @Input() game!: Game;
 }

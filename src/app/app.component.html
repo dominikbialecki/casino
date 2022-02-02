@@ -1,13 +1,10 @@
 <header>
   <nav>
     <ul class="navbar-list">
-      <li *ngFor="let navItem of navBarItems"
-          class="navbar-list-item"
-          [class.navbar-list-item--active]="rla.isActive">
+      <li *ngFor="let navItem of navBarItems" class="navbar-list-item">
         <a class="navbar-list-item-link"
-           [routerLink]="['games', navItem.category]"
-           [routerLinkActive]="[]"
-           #rla="routerLinkActive">
+           [routerLink]="['games', navItem.path]"
+           routerLinkActive="navbar-list-item-link--active">
           {{navItem.label}}
         </a>
       </li>

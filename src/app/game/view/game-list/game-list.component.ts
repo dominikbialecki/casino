@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, TrackByFunction } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { Game } from '../../domain/game';
 import { GameCategory } from '../../domain/game-category';
 import { GameFacadeService } from '../../domain/game-facade.service';
@@ -11,9 +13,15 @@ import { GameFacadeService } from '../../domain/game-facade.service';
 })
 export class GameListComponent {
 
-  readonly category = GameCategory.NEW;
-  readonly games$ = this.facade.gamesByCategory(this.category);
+  readonly games$: Observable<Game[]>;
   readonly gameTrackFunction: TrackByFunction<Game> = (index, game) => game.id;
 
-  constructor(private readonly facade: GameFacadeService) { }
+  constructor(private readonly facade: GameFacadeService,
+              private readonly activatedRoute: ActivatedRoute
+  ) {
+    const categories$ = this.activatedRoute.data.pipe(map(data => data['categories'] as GameCategory[]));
+    this.games$ = categories$.pipe(
+      switchMap(categories => categories[0] ? this.facade.gamesByCategory(categories[0]) : of([]))
+    );
+  }
 }
