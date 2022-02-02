@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, TrackByFunction } from '@angular/core';
 import { Game } from '../../domain/game';
+import { GameCategory } from '../../domain/game-category';
 import { GameFacadeService } from '../../domain/game-facade.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { GameFacadeService } from '../../domain/game-facade.service';
 })
 export class GameListComponent {
 
-  readonly category = 'new';
+  readonly category = GameCategory.NEW;
   readonly games$ = this.facade.gamesByCategory(this.category);
   readonly gameTrackFunction: TrackByFunction<Game> = (index, game) => game.id;
 

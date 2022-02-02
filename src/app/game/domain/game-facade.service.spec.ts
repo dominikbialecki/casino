@@ -2,6 +2,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { GAME_ENDPOINTS } from '../config/game.endpoints';
 import { Game } from './game';
+import { GameCategory } from './game-category';
 
 import { GameFacadeService } from './game-facade.service';
 import { GameDto } from './game.dto';
@@ -20,16 +21,15 @@ describe('GameFacadeService', () => {
 
   it('should provide games', fakeAsync(() => {
     let result: Game[] = [];
-    let searchedCategory = 'new';
+    let searchedCategory = GameCategory.NEW;
 
     // Given server contains games with various categories
 
     const game1 = gameDtoMock({ id: '1', categories: [] });
-    const game2 = gameDtoMock({ id: '1', categories: ['newly'] });
-    const game3 = gameDtoMock({ id: '2', categories: ['new', 'top'] });
-    const game4 = gameDtoMock({ id: '3', categories: ['top'] });
-    const game5 = gameDtoMock({ id: '4', categories: ['new'] });
-    const serverResponse: GameDto[] = [game1, game2, game3, game4, game5];
+    const game2 = gameDtoMock({ id: '2', categories: [GameCategory.NEW, GameCategory.TOP] });
+    const game3 = gameDtoMock({ id: '3', categories: [GameCategory.TOP] });
+    const game4 = gameDtoMock({ id: '4', categories: [GameCategory.NEW] });
+    const serverResponse: GameDto[] = [game1, game2, game3, game4];
 
     // When I fetch games with given category
 
@@ -40,7 +40,7 @@ describe('GameFacadeService', () => {
     expect(result).toHaveSize(0);
     httpMock.expectOne({ method: 'GET', url: GAME_ENDPOINTS.GAMES }).flush(serverResponse);
     tick();
-    expect(result).toEqual(toExpectedGames([game3, game5]));
+    expect(result).toEqual(toExpectedGames([game2, game3]));
   }));
 });
 

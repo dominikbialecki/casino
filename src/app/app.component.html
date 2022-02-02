@@ -1,1 +1,19 @@
-<router-outlet></router-outlet>
+<header>
+  <nav>
+    <ul class="navbar-list">
+      <li *ngFor="let navItem of navBarItems"
+          class="navbar-list-item"
+          [class.navbar-list-item--active]="rla.isActive">
+        <a class="navbar-list-item-link"
+           [routerLink]="['games', navItem.category]"
+           [routerLinkActive]="[]"
+           #rla="routerLinkActive">
+          {{navItem.label}}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
