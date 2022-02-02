@@ -1,4 +1,4 @@
-import { Id } from '../core/id';
+import { Id } from '../../core/id';
 import { GameCategory } from './game-category';
 
 export interface GameDto {
