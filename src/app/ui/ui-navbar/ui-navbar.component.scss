@@ -1,0 +1,44 @@
+@use 'palette' as palette;
+
+:host {
+  background-color: palette.$dark;
+  display: block;
+}
+
+.navbar-list {
+  height: 100%;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  flex: 1 1 auto;
+  font-size: 34px;
+  color: palette.$white;
+
+  .navbar-list-item {
+    flex: 1 1 auto;
+  }
+}
+
+.navbar-list-item-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding-bottom: 14px;
+  transition: background-color 100ms ease-in-out;
+
+  &--active {
+    background-color: palette.$accent;
+  }
+}
+
+.navbar-list-item-link:hover, .navbar-list-item-link:focus-visible {
+  outline: none;
+  background-color: lighten(palette.$dark, 5%);
+
+  &.navbar-list-item-link--active {
+    background-color: darken(palette.$accent, 10%);
+  }
+}

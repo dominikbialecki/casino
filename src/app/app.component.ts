@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NAVBAR_ITEMS } from './config/navbar-items';
 
 @Component({
   selector: 'bet-root',
@@ -6,16 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  navBarItems = [
-    { label: 'Top Games', path: 'top' },
-    { label: 'New Games', path: 'new' },
-    { label: 'Slots', path: 'slots' },
-    { label: 'Jackpots', path: 'jackpots' },
-    { label: 'Live', path: 'live' },
-    { label: 'Blackjack', path: 'blackjack' },
-    { label: 'Roulette', path: 'roulette' },
-    { label: 'Table', path: 'table' },
-    { label: 'Poker', path: 'poker' },
-    { label: 'Other', path: 'other' }
-  ];
+  navbarItems = NAVBAR_ITEMS;
 }

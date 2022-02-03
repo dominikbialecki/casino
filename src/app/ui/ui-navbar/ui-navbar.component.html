@@ -1,0 +1,9 @@
+<ul class="navbar-list">
+  <li *ngFor="let item of items" class="navbar-list-item">
+    <a class="navbar-list-item-link"
+       [routerLink]="item.redirectUrl"
+       routerLinkActive="navbar-list-item-link--active">
+      {{item.label}}
+    </a>
+  </li>
+</ul>

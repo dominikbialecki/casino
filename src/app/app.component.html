@@ -1,14 +1,6 @@
 <header>
   <nav>
-    <ul class="navbar-list">
-      <li *ngFor="let navItem of navBarItems" class="navbar-list-item">
-        <a class="navbar-list-item-link"
-           [routerLink]="['games', navItem.path]"
-           routerLinkActive="navbar-list-item-link--active">
-          {{navItem.label}}
-        </a>
-      </li>
-    </ul>
+    <ui-navbar [items]="navbarItems"></ui-navbar>
   </nav>
 </header>
 <main>
