@@ -1,9 +1,5 @@
-import { ChangeDetectionStrategy, Component, TrackByFunction } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map, Observable, of, switchMap } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@angular/core';
 import { Game } from '../../domain/game';
-import { GameCategory } from '../../domain/game-category';
-import { GameFacadeService } from '../../domain/game-facade.service';
 
 @Component({
   selector: 'bet-game-list',
@@ -13,15 +9,9 @@ import { GameFacadeService } from '../../domain/game-facade.service';
 })
 export class GameListComponent {
 
-  readonly games$: Observable<Game[]>;
   readonly gameTrackFunction: TrackByFunction<Game> = (index, game) => game.id;
 
-  constructor(readonly facade: GameFacadeService,
-              private readonly activatedRoute: ActivatedRoute
-  ) {
-    const categories$ = this.activatedRoute.data.pipe(map(data => data['categories'] as GameCategory[]));
-    this.games$ = categories$.pipe(
-      switchMap(categories => categories[0] ? this.facade.gamesByCategory(categories[0]) : of([]))
-    );
-  }
+  @Input() games: Game[] = [];
+  @Input() disableTopRibbon?: boolean;
+  @Input() disableNewRibbon?: boolean;
 }

@@ -1,0 +1,7 @@
+<ng-container *ngIf="data$ | async as data">
+  <bet-game-list
+    [games]="(games$ | async) || []"
+    [disableTopRibbon]="data.disableTopRibbons"
+    [disableNewRibbon]="data.disableNewRibbons"
+  ></bet-game-list>
+</ng-container>
