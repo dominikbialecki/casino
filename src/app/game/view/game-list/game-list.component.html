@@ -1,5 +1,6 @@
 <ng-container *ngIf="games$ | async as games">
   <bet-game-tile *ngFor="let game of games; trackBy: gameTrackFunction"
                  [game]="game"
+                 [jackpot]="game.jackpot"
   ></bet-game-tile>
 </ng-container>

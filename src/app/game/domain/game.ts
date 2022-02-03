@@ -1,27 +1,13 @@
-import { Id } from '../../core/id';
+import { Id } from '../../core/domain/id';
+import { Money } from '../../core/domain/money';
 import { GameCategory } from './game-category';
 
-export interface GameProps {
-  id: Id;
-  categories: GameCategory[];
-  name: string;
-  image: string;
-}
-
-export class Game {
-  id: Id;
-  categories: GameCategory[];
-  name: string;
-  image: string;
-
-  constructor(props: GameProps) {
-    this.id = props.id;
-    this.categories = props.categories;
-    this.name = props.name;
-    this.image = props.image;
-  }
-
-  hasCategory(category: GameCategory): boolean {
-    return this.categories.some(c => c === category);
-  }
+export interface Game {
+  readonly id: Id;
+  readonly categories: ReadonlyArray<GameCategory>;
+  readonly name: string;
+  readonly image: string;
+  readonly jackpot?: Money;
+  readonly isTop: boolean;
+  readonly isNew: boolean;
 }

@@ -16,7 +16,7 @@ export class GameListComponent {
   readonly games$: Observable<Game[]>;
   readonly gameTrackFunction: TrackByFunction<Game> = (index, game) => game.id;
 
-  constructor(private readonly facade: GameFacadeService,
+  constructor(readonly facade: GameFacadeService,
               private readonly activatedRoute: ActivatedRoute
   ) {
     const categories$ = this.activatedRoute.data.pipe(map(data => data['categories'] as GameCategory[]));

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Money } from '../../../core/domain/money';
 import { Game } from '../../domain/game';
 
 @Component({
@@ -9,4 +10,5 @@ import { Game } from '../../domain/game';
 })
 export class GameTileComponent {
   @Input() game!: Game;
+  @Input() jackpot?: Money;
 }

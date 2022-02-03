@@ -13,16 +13,12 @@ export class GameRepositoryService {
 
   games(): Observable<Game[]> {
     return this.http.get<GameDto[]>(GAME_ENDPOINTS.GAMES).pipe(
-      map(response => response.map(dto => new Game({
+      map(response => response.map(dto => ({
         ...dto,
-        categories: [...dto.categories]
+        categories: [...dto.categories],
+        isTop: dto.categories.includes(GameCategory.TOP),
+        isNew: dto.categories.includes(GameCategory.NEW)
       })))
-    );
-  }
-
-  gamesByCategory(category: GameCategory): Observable<Game[]> {
-    return this.games().pipe(
-      map(games => games.filter(game => game.hasCategory(category)))
     );
   }
 }

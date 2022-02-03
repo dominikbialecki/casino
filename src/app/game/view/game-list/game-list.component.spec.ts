@@ -59,11 +59,13 @@ describe('GameListComponent', () => {
 });
 
 export function gameMock(props: Partial<Game>): Game {
-  return new Game({
+  return {
     categories: [],
     image: 'image',
     name: 'name',
     id: 'id',
+    isTop: false,
+    isNew: false,
     ...props
-  });
+  };
 }

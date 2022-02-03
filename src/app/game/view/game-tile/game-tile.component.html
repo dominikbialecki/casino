@@ -1,1 +1,5 @@
 <img [src]="game.image" [alt]="game.name">
+
+<span class="jackpot" *ngIf="jackpot">
+  {{jackpot | currency}}
+</span>
