@@ -1,8 +1,10 @@
 @use 'palette' as palette;
+@use 'fonts' as fonts;
 
 html {
   height: 100%;
   background-color: palette.$light;
+  font-family: fonts.$sans-serif;
 }
 
 body {
