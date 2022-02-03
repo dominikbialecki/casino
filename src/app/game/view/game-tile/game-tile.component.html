@@ -2,9 +2,11 @@
   <img [src]="game.image" [alt]="game.name">
 
   <span class="jackpot" role="marquee" *ngIf="game.jackpot">
-  {{game.jackpot | currency}}
-</span>
+    {{game.jackpot | currency}}
+  </span>
 </div>
+
+<div class="play-icon"></div>
 
 <bet-game-tile-ribbon *ngIf="newRibbon"
                       class="new-ribbon"
