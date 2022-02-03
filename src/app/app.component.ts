@@ -10,11 +10,11 @@ export class AppComponent {
     { label: 'Top Games', path: 'top' },
     { label: 'New Games', path: 'new' },
     { label: 'Slots', path: 'slots' },
-    { label: 'Jackpots', path: 'jackpots' }, // TODO handle jackpots
-    { label: 'Live', path: 'live' }, // TODO what should be displayed here?
+    { label: 'Jackpots', path: 'jackpots' },
+    { label: 'Live', path: 'live' },
     { label: 'Blackjack', path: 'blackjack' },
     { label: 'Roulette', path: 'roulette' },
-    { label: 'Table', path: 'table' },// TODO table === classic?
+    { label: 'Table', path: 'table' },
     { label: 'Poker', path: 'poker' },
     { label: 'Other', path: 'other' }
   ];

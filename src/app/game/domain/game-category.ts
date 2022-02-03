@@ -3,13 +3,15 @@ export enum GameCategory {
   NEW = 'new',
   SLOTS = 'slots',
   JACKPOT = 'jackpot',
+  LIVE = 'live',
   BLACKJACK = 'blackjack',
   ROULETTE = 'roulette',
-  CLASSIC = 'classic', // table?
+  TABLE = 'table',
   POKER = 'poker',
   FUN = 'fun',
   VIRTUAL = 'virtual',
   BALL = 'ball',
+  CLASSIC = 'classic',
 }
 
 

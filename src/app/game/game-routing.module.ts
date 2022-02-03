@@ -19,10 +19,10 @@ const routes: Routes = [
   gameListRoute({ path: 'new', categories: [GameCategory.NEW], disableNewRibbons: true }),
   gameListRoute({ path: 'slots', categories: [GameCategory.SLOTS] }),
   gameListRoute({ path: 'jackpots', categories: [GameCategory.JACKPOT] }),
-  gameListRoute({ path: 'live', categories: [GameCategory.BLACKJACK] }),
+  gameListRoute({ path: 'live', categories: [GameCategory.LIVE] }),
   gameListRoute({ path: 'blackjack', categories: [GameCategory.BLACKJACK] }),
   gameListRoute({ path: 'roulette', categories: [GameCategory.ROULETTE] }),
-  gameListRoute({ path: 'table', categories: [GameCategory.CLASSIC] }),
+  gameListRoute({ path: 'table', categories: [GameCategory.TABLE] }),
   gameListRoute({ path: 'poker', categories: [GameCategory.POKER] }),
   gameListRoute({ path: 'other', categories: [GameCategory.FUN, GameCategory.VIRTUAL, GameCategory.BALL] }),
   { path: '', pathMatch: 'full', redirectTo: 'new' }
