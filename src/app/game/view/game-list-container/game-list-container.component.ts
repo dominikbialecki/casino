@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { Game } from '../../domain/game';
 import { GameFacadeService } from '../../domain/game-facade.service';
 import { GameListRouteData } from '../../game-routing.module';
@@ -21,7 +21,7 @@ export class GameListContainerComponent {
   ) {
     this.data$ = this.activatedRoute.data as Observable<GameListRouteData>;
     this.games$ = this.data$.pipe(
-      switchMap(({ categories }) => categories[0] ? this.facade.gamesByCategory(categories[0]) : of([]))
+      switchMap(({ categories }) => this.facade.gamesByCategories(categories))
     );
   }
 }

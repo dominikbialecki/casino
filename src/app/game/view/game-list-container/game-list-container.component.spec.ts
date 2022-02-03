@@ -6,6 +6,7 @@ import { Game } from '../../domain/game';
 import { GameCategory } from '../../domain/game-category';
 import { GameFacadeService } from '../../domain/game-facade.service';
 import { GameListRouteData } from '../../game-routing.module';
+import { gameMock } from '../../test-utils/game-mock';
 
 import { GameListContainerComponent } from './game-list-container.component';
 
@@ -18,7 +19,7 @@ describe('GameListContainerComponent', () => {
   const GAMES: Game[] = [gameMock({ id: '1', categories: [GameCategory.JACKPOT] })];
 
   beforeEach(async () => {
-    facadeSpy = jasmine.createSpyObj('GameFacadeService', ['gamesByCategory']);
+    facadeSpy = jasmine.createSpyObj('GameFacadeService', ['gamesByCategories']);
 
     await TestBed.configureTestingModule({
       declarations: [GameListContainerComponent],
@@ -58,25 +59,13 @@ describe('GameListContainerComponent', () => {
   it('should fetch games by category', fakeAsync(() => {
     // given
     let result: Game[] = [];
-    facadeSpy.gamesByCategory.and.returnValue(of(GAMES));
+    facadeSpy.gamesByCategories.and.returnValue(of(GAMES));
 
     // when
     component.games$.subscribe(games => result = games);
 
     // then
-    expect(facadeSpy.gamesByCategory).toHaveBeenCalledWith(ROUTE_DATA.categories[0]);
+    expect(facadeSpy.gamesByCategories).toHaveBeenCalledWith(ROUTE_DATA.categories);
     expect(result).toEqual(GAMES);
   }));
 });
-
-export function gameMock(props: Partial<Game>): Game {
-  return {
-    categories: [],
-    image: 'image',
-    name: 'name',
-    id: 'id',
-    isTop: false,
-    isNew: false,
-    ...props
-  };
-}

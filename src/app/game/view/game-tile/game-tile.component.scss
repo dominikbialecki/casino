@@ -63,7 +63,6 @@ bet-game-tile-ribbon {
   right: 0;
 }
 
-
 .image-wrapper::after {
   position: absolute;
   z-index: map-get($z-indexes, "hover-overlay");
@@ -96,7 +95,6 @@ bet-game-tile-ribbon {
 }
 
 :host:hover {
-
   .play-icon {
     opacity: 1;
   }

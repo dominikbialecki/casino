@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Game } from '../../domain/game';
 
 import { GameTileComponent } from './game-tile.component';
 
@@ -16,10 +17,11 @@ describe('GameTileComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GameTileComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.game = {} as Game;
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

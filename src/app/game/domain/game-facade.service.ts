@@ -14,9 +14,9 @@ export class GameFacadeService {
               private readonly jackpotRepository: JackpotRepositoryService
   ) { }
 
-  gamesByCategory(category: GameCategory): Observable<Game[]> {
+  gamesByCategories(categories: GameCategory[]): Observable<Game[]> {
     return this.gamesWithJackpots().pipe(
-      map(games => games.filter(g => g.categories.includes(category)))
+      map(games => games.filter(g => g.categories.some(c => categories.includes(c))))
     );
   }
 
@@ -28,7 +28,7 @@ export class GameFacadeService {
         return games.map(game => {
           const jackpot = jackpots.find(j => j.gameId === game.id);
           if (jackpot) {
-            return { ...game, jackpot: jackpot.amount, categories: [...game.categories, GameCategory.JACKPOT] };
+            return Game.create({ ...game, jackpot: jackpot.amount });
           } else {
             return game;
           }

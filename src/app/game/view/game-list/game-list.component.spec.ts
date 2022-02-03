@@ -1,7 +1,8 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Game } from '../../domain/game';
+import { GameCategory } from '../../domain/game-category';
+import { gameMock } from '../../test-utils/game-mock';
 import { GameTileComponent } from '../game-tile/game-tile.component';
 
 import { GameListComponent } from './game-list.component';
@@ -50,7 +51,7 @@ describe('GameListComponent', () => {
 
   it('should enable "new" ribbon when game is new', fakeAsync(() => {
     // given there is a new game
-    component.games = [gameMock({ image: 'url1', isNew: true })];
+    component.games = [gameMock({ image: 'url1', categories: [GameCategory.NEW], isNew: true })];
 
     // when tile is rendered
     fixture.detectChanges();
@@ -63,7 +64,7 @@ describe('GameListComponent', () => {
 
   it('should disable "new" ribbon when game is new but ribbon is disabled on list level', fakeAsync(() => {
     // given there is a new game
-    component.games = [gameMock({ image: 'url1', isNew: true })];
+    component.games = [gameMock({ image: 'url1', categories: [GameCategory.NEW], isNew: true })];
 
     // and new game ribbons are disabled
     component.disableNewRibbon = true;
@@ -78,14 +79,4 @@ describe('GameListComponent', () => {
   }));
 });
 
-export function gameMock(props: Partial<Game>): Game {
-  return {
-    categories: [],
-    image: 'image',
-    name: 'name',
-    id: 'id',
-    isTop: false,
-    isNew: false,
-    ...props
-  };
-}
+
