@@ -94,7 +94,9 @@ bet-game-tile-ribbon {
   transition: opacity 200ms ease-in-out;
 }
 
-:host:hover {
+:host:hover, :host:focus {
+  outline: none;
+
   .play-icon {
     opacity: 1;
   }

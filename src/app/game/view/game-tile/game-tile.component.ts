@@ -5,7 +5,10 @@ import { Game } from '../../domain/game';
   selector: 'bet-game-tile',
   templateUrl: './game-tile.component.html',
   styleUrls: ['./game-tile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    tabindex: '0'
+  }
 })
 export class GameTileComponent {
   @Input() game!: Game;
