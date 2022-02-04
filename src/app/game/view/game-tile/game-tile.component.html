@@ -1,5 +1,5 @@
 <div class="image-wrapper">
-  <img [src]="game.image" [alt]="game.name">
+  <img uiImage [src]="game.image" [alt]="game.name">
 
   <span class="jackpot" role="marquee" *ngIf="game.jackpot">
     {{game.jackpot | currency}}

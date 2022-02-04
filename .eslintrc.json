@@ -22,15 +22,15 @@
         "@angular-eslint/directive-selector": [
           "error",
           {
-            "type": "attribute",
-            "prefix": "bet",
+            "type": ["attribute"],
+            "prefix": ["bet", "ui"],
             "style": "camelCase"
           }
         ],
         "@angular-eslint/component-selector": [
           "error",
           {
-            "type": "element",
+            "type": ["element"],
             "prefix": ["bet", "ui"],
             "style": "kebab-case"
           }
