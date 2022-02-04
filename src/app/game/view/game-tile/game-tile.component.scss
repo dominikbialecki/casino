@@ -40,7 +40,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   color: palette.$white;
   font-weight: bold;
 }
@@ -94,7 +94,7 @@ bet-game-tile-ribbon {
   transition: opacity 200ms ease-in-out;
 }
 
-:host:hover, :host:focus {
+:host:hover, :host:focus-visible {
   outline: none;
 
   .play-icon {
