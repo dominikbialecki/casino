@@ -1,4 +1,5 @@
 @use 'palette' as palette;
+@use 'screen-size' as screen-size;
 
 :host {
   background-color: palette.$dark;
@@ -9,7 +10,6 @@
   height: 100%;
   display: flex;
   flex: 1 1 auto;
-  font-size: 34px;
   color: palette.$white;
 
   .navbar-list-item {
@@ -19,14 +19,15 @@
 
 .navbar-list-item-link {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: nowrap;
   box-sizing: border-box;
-  padding-bottom: 14px;
   transition: background-color 100ms ease-in-out;
+  height: 60px;
+  font-size: 12px;
+  padding-bottom: 4px;
 
   &--active {
     background-color: palette.$accent;
@@ -39,5 +40,35 @@
 
   &.navbar-list-item-link--active {
     background-color: darken(palette.$accent, 10%);
+  }
+}
+
+@include screen-size.screen-s {
+  .navbar-list-item-link {
+    font-size: 18px;
+    height: 68px;
+    padding-bottom: 4px;
+  }
+}
+
+@include screen-size.screen-m {
+  .navbar-list-item-link {
+    font-size: 18px;
+    padding-bottom: 4px;
+  }
+}
+
+@include screen-size.screen-l {
+  .navbar-list-item-link {
+    font-size: 24px;
+    padding-bottom: 6px;
+  }
+}
+
+@include screen-size.screen-xl {
+  .navbar-list-item-link {
+    font-size: 34px;
+    height: 88px;
+    padding-bottom: 12px;
   }
 }

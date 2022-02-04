@@ -2,6 +2,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 
   header {
     flex: 0 0 auto;
@@ -13,16 +14,8 @@
   }
 }
 
-header {
-  height: 76px;
-
-  nav, ui-navbar {
-    height: 100%;
-  }
-}
-
 main {
-  padding: 50px 0;
+  padding: 66px 0;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,12 +1,12 @@
-// TODO Game image dimensions are different than those on the screen. Should I crop the image, stretch it, or change the layout?
+@use 'screen-size' as screen-size;
 
 :host {
   display: grid;
-  gap: 40px 20px;
-  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 60px 20px;
+  grid-template-columns: repeat(auto-fill, 380px);
   justify-content: center;
 
   bet-game-tile {
-    height: 210px;
+    height: 280px;
   }
 }

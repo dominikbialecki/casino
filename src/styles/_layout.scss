@@ -1,10 +1,14 @@
 @use 'palette' as palette;
 @use 'fonts' as fonts;
+@use 'screen-size' as screen-size;
 
 html {
   height: 100%;
   background-color: palette.$light;
   font-family: fonts.$sans-serif;
+  background-image: url("~src/assets/background.png");
+  background-repeat: repeat;
+  background-size: initial;
 }
 
 body {
@@ -17,5 +21,5 @@ body {
 main > router-outlet + * {
   width: 100%;
   height: 100%;
-  max-width: 1700px;
+  max-width: screen-size.$width-xl;
 }
