@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, map, Observable } from 'rxjs';
+import { catchError, combineLatest, EMPTY, map, Observable } from 'rxjs';
 import { JackpotRepositoryService } from '../../jackpot/domain/jackpot-repository.service';
 import { Game } from './game';
 import { GameCategory } from './game-category';
@@ -33,6 +33,10 @@ export class GameFacadeService {
             return game;
           }
         });
+      }),
+      catchError(e => {
+        console.error('Fetching games failed', e);
+        return EMPTY;
       })
     );
   }
