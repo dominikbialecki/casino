@@ -2,57 +2,42 @@
 
 /*
   TODO: specify source, finish implementation
-  https://devsnap.me/css-ribbons
-  Author: Elena Nazarova (nazarelen)
-  https://codepen.io/nazarelen/pen/BKGZPP
+  Ribbon styles are a mix of two css snippets found online and adopted to the requirements.
+  * https://codepen.io/nazarelen/pen/BKGZPP (found on https://devsnap.me/css-ribbons), Author: Elena Nazarova (nazarelen)
+  * https://stackoverflow.com/a/64153471, Author: Temani Afif
  */
 
-
-:host.top-left {
-  .ribbon {
-    transform: rotate(315deg);
-    right: unset;
-    left: -50px;
-  }
-
-  .wrap {
-    left: unset;
-    right: 8px;
-  }
-
-  .wrap::before {
-    right: unset;
-    left: 100px;
-  }
-
-  .wrap::after {
-    right: unset;
-    left: 0;
-  }
+.ribbon {
+  height: 160px;
+  width: 250px;
+  position: absolute;
+  top: -27px;
+  right: -55px;
+  transform: rotate(42deg) scale(2, 0.5);
+  display: inline-block;
+  border-radius: 500px 500px 0 0;
+  background: linear-gradient(to right, black 30%, palette.$accent 51%, palette.$accent 56%, palette.$white 85%);
+  -webkit-mask: radial-gradient(farthest-side at bottom, transparent calc(100% - 60px - 1px), #fff calc(100% - 60px)), linear-gradient(160deg, #fff 50%, transparent 0) top/100% 200%;
+  -webkit-mask-composite: destination-in;
 }
 
-.ribbon {
-  width: 200px;
-  height: 40px;
-  line-height: 40px;
+.text {
   position: absolute;
-  top: 30px;
-  right: -50px;
-  z-index: 2;
-  overflow: hidden;
-  transform: rotate(45deg);
-  box-shadow: 0 0 0 3px #57DD43, 0px 21px 5px -18px rgba(0, 0, 0, 0.6);
-  text-align: center;
-  background-color: palette.$accent;
-  color: palette.$white;
+  transform: rotate(42deg);
+  top: 34px;
+  right: 20px;
+  color: white;
+  z-index: 5;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .wrap {
-  width: 100%;
+  width: 188px;
   height: 188px;
   position: absolute;
   top: -8px;
-  left: 8px;
+  right: -8px;
   overflow: hidden;
 }
 
@@ -64,18 +49,24 @@
 .wrap:before {
   width: 40px;
   height: 8px;
-  right: 100px;
-  background: #4D6530;
-  border-radius: 8px 8px 0px 0px;
+  right: 112px;
+  background: linear-gradient(to bottom, palette.$dark 0, palette.$accent 40%, palette.$accent 70%, palette.$dark);
+  border-radius: 8px 8px 0 0;
 }
 
 .wrap:after {
   width: 8px;
-  height: 40px;
-  right: 0px;
-  top: 100px;
-  background: #4D6530;
-  border-radius: 0px 8px 8px 0px;
+  height: 80px;
+  right: 0;
+  top: 70px;
+  background: linear-gradient(to right, palette.$dark 0, palette.$accent 40%, palette.$accent 90%, palette.$dark);
+  border-radius: 0 8px 8px 0;
+  z-index: -1;
 }
 
-
+:host.top-left {
+  .wrap {
+    transform: rotate(270deg);
+    left: -8px;
+  }
+}
