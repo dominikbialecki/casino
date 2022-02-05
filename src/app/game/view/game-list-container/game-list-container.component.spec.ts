@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { of, take } from 'rxjs';
 import { Game } from '../../domain/game';
 import { GameCategory } from '../../domain/game-category';
 import { GameFacadeService } from '../../domain/game-facade.service';
@@ -42,19 +42,17 @@ describe('GameListContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should retrieve data', (done) => {
+  it('should retrieve data', fakeAsync(() => {
     // given
-    let result: GameListRouteData | null = null;
+    let result: GameListRouteData = {} as GameListRouteData;
 
     // when
-    component.data$.subscribe(result => {
+    component.data$.subscribe(data => result = data);
+    tick();
 
-      // then
-      expect(result).toEqual(ROUTE_DATA);
-      done();
-    });
-
-  });
+    // then
+    expect(result).toEqual(ROUTE_DATA);
+  }));
 
   it('should fetch games by category', fakeAsync(() => {
     // given
@@ -62,7 +60,9 @@ describe('GameListContainerComponent', () => {
     facadeSpy.gamesByCategories.and.returnValue(of(GAMES));
 
     // when
-    component.games$.subscribe(games => result = games);
+    component.games$.pipe(take(1)).subscribe(games => result = games);
+    tick();
+    fixture.detectChanges();
 
     // then
     expect(facadeSpy.gamesByCategories).toHaveBeenCalledWith(ROUTE_DATA.categories);
